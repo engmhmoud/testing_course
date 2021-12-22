@@ -7,8 +7,17 @@ name = "pypi"
 pytest = "*"
 django = "*"
 djangorestframework = "*"
+pytz = "*"
+black = "*"
+pytest-django = "*"
 
 [dev-packages]
+pylint = "*"
+flake8 = "*"
+pycodestyle = "*"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
