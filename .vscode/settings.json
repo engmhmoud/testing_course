@@ -156,7 +156,8 @@
         "cond",
         "febo",
         "jqoezr",
-        "nada"
+        "nada",
+        "tock"
     ],
     "jupyter.debugJustMyCode": true,
     "debug.allowBreakpointsEverywhere": true,

@@ -10,6 +10,7 @@ djangorestframework = "*"
 pytz = "*"
 black = "*"
 pytest-django = "*"
+allure-pytest = "*"
 
 [dev-packages]
 pylint = "*"

@@ -1,4 +1,7 @@
+from typing import Callable
+
 import pytest
+from fixtures import time_tracker
 
 from febo import cached_feb, cached_lru_feb, feb
 
@@ -42,6 +45,8 @@ def my_parameterize(argnames, argvalues):
 
 
 # @pytest.mark.parametrize(
+
+
 @pytest.mark.parametrize(argnames=["n", "result"], argvalues=[(0, 0), (1, 1), (2, 1), (3, 2), (25, 75025)])
 def test_feb(n: int, result: int):
     assert feb(n) == result
@@ -55,3 +60,11 @@ def test_cached_feb(n: int, result: int):
 @pytest.mark.parametrize(argnames=["n", "result"], argvalues=[(0, 0), (1, 1), (2, 1), (3, 2), (25, 75025)])
 def test_cached_feb_lru(n: int, result: int):
     assert cached_lru_feb(n) == result
+
+
+@pytest.mark.parametrize(argnames=["n", "result"], argvalues=[(0, 0), (1, 1), (2, 1), (3, 2), (25, 75025)])
+@pytest.mark.parametrize("feb_fnc", [test_feb, test_cached_feb, test_cached_feb_lru])
+def test_all_feb(time_tracker, feb_fnc: Callable[[int, int], int], n: int, result: int):
+    # res = feb_fnc(n)
+    # assert res == result
+    feb_fnc(n, result)

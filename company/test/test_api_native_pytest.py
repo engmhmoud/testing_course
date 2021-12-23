@@ -69,7 +69,7 @@ def raise_covid_error():
     raise ValueError("Error Covid")
 
 
-def test_will_loge_something():
+def test_will_log_something():
     try:
         raise_covid_error()
     except ValueError as e:
@@ -78,11 +78,11 @@ def test_will_loge_something():
 
 def test_testing(caplog):
 
-    test_will_loge_something()
+    test_will_log_something()
     assert "Covid" in caplog.text
 
 
 def test_testing_info(caplog):
     with caplog.at_level(logging.INFO) as e:
-        logging.info(f"info:{str(e)}")
+        logging.warning(f"info:{str(e)}")
     assert "Covid" in caplog.text
